@@ -19,7 +19,7 @@ namespace Calculator.TEST.Test
         }
 
         [Fact]
-        public void Execute_Addition_ReturnsCorrectResult()
+        public void Execute_Addition_PositiveNumbers_ReturnsCorrectResult()
         {
             // Arrange
             var request = CalculatorTestDataCollection.GetAdditionData();
@@ -27,10 +27,49 @@ namespace Calculator.TEST.Test
             _fixture._mockFactory.Setup(f => f.Create(OperationType.Addition)).Returns(new AdditionOperation());
 
             // Act
-            var response = _fixture._calculatorService.Execute(request.Left,request.Right,request.Operation);
+            var response = _fixture._calculatorService.Execute(request.Left, request.Right, request.Operation);
 
             // Assert
             Assert.Equal(request.ExpectedResult, response.Results);
+            Assert.Equal(CalculationError.None, response.Error);
+        }
+        [Fact]
+        public void Execute_Addition_WithZero_ReturnsCorrectResult()
+        {
+            var testData = CalculatorTestDataCollection.GetAdditionWithZero();
+
+            _fixture._mockFactory.Setup(f => f.Create(testData.Operation)).Returns(new AdditionOperation());
+
+            var response = _fixture._calculatorService.Execute(testData.Left,testData.Right, testData.Operation
+            );
+
+            Assert.Equal(testData.ExpectedResult, response.Results);
+            Assert.Equal(CalculationError.None, response.Error);
+        }
+
+        [Fact]
+        public void Execute_Addition_WithNegative_ReturnsCorrectResult()
+        {
+            var testData = CalculatorTestDataCollection.GetAdditionWithNegative();
+
+            _fixture._mockFactory.Setup(f => f.Create(testData.Operation)).Returns(new AdditionOperation());
+
+            var response = _fixture._calculatorService.Execute(testData.Left,testData.Right, testData.Operation);
+
+            Assert.Equal(testData.ExpectedResult, response.Results);
+            Assert.Equal(CalculationError.None, response.Error);
+        }
+
+        [Fact]
+        public void Execute_Addition_BothNegative_ReturnsCorrectResult()
+        {
+            var testData = CalculatorTestDataCollection.GetAdditionBothNegative();
+
+            _fixture._mockFactory.Setup(f => f.Create(testData.Operation)).Returns(new AdditionOperation());
+
+            var response = _fixture._calculatorService.Execute(testData.Left,testData.Right,testData.Operation);
+
+            Assert.Equal(testData.ExpectedResult, response.Results);
             Assert.Equal(CalculationError.None, response.Error);
         }
     }
