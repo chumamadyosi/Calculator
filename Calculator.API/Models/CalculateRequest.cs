@@ -1,5 +1,5 @@
 ﻿namespace Calculator.API.Models
 {
-    public record CalculateRequest(decimal FirstNumber, decimal SecondNumber, string Operator);
+    public record CalculateRequest(decimal left, decimal Right, string Operation);
 
 }
