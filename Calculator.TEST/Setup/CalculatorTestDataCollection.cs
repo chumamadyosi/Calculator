@@ -23,13 +23,13 @@ namespace Calculator.TEST.Setup
 
         public static TestCalculateData GetSubtractionData()
         {
-            return new TestCalculateData(
-                Left: 10,
-                Right: 5,
-                Operation: OperationType.Subtraction,
-                ExpectedResult: 5
-            );
+            return new TestCalculateData(Left: 10, Right: 5, Operation: OperationType.Subtraction, ExpectedResult: 5);
         }
+        public static TestCalculateData GetSubtractionWithZero() => new TestCalculateData(10, 0, OperationType.Subtraction, 10);
+
+        public static TestCalculateData GetSubtractionWithNegative() => new TestCalculateData(10, -5, OperationType.Subtraction, 15);
+
+        public static TestCalculateData GetSubtractionBothNegative() => new TestCalculateData(-10, -5, OperationType.Subtraction, -5);
 
         public static TestCalculateData GetMultiplicationData()
         {
