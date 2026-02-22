@@ -19,6 +19,7 @@ namespace Calculator.TEST.Setup
         }
         public static TestCalculateData GetAdditionWithNegative() => new TestCalculateData(-3, 7, OperationType.Addition, 4);
         public static TestCalculateData GetAdditionWithZero() => new TestCalculateData(0, 5, OperationType.Addition, 5);
+        public static TestCalculateData GetAdditionBothNegative() => new TestCalculateData(-4, -6, OperationType.Addition, -10);
 
         public static TestCalculateData GetSubtractionData()
         {
