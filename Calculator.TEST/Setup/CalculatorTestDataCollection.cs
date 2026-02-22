@@ -17,6 +17,9 @@ namespace Calculator.TEST.Setup
                 ExpectedResult: 15
             );
         }
+        public static TestCalculateData GetAdditionWithNegative() => new TestCalculateData(-3, 7, OperationType.Addition, 4);
+        public static TestCalculateData GetAdditionWithZero() => new TestCalculateData(0, 5, OperationType.Addition, 5);
+
         public static TestCalculateData GetSubtractionData()
         {
             return new TestCalculateData(
