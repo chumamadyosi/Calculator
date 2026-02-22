@@ -4,8 +4,6 @@
     {
         None,
         DivisionByZero = 1,
-        InvalidOperator = 2,
-        //Overflow,
-        //Underflow
+        InvalidOperation = 2
     }
 }
