@@ -23,7 +23,7 @@ namespace Calculator.API.Services
             }
             catch (NotSupportedException ex)
             {
-                _logger.LogError(ex, "Operation type {operatorSymbol} is not supported.", operatorSymbol);
+                _logger.LogError(ex, "Operation type {operatorSymbol} is not supported. ", operatorSymbol);
                 return new CalculateResponse { Results = null, Error = CalculationError.InvalidOperation };
             }
             catch (Exception ex)
