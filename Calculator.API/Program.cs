@@ -13,7 +13,16 @@ namespace Calculator.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var allowedOrigin = builder.Configuration["AllowedFrontend"];
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowedUrls", policy =>
+                {
+                    policy.WithOrigins(allowedOrigin!)
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
 
             builder.Services.AddControllers()
             .AddJsonOptions(options =>
@@ -41,6 +50,7 @@ namespace Calculator.API
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowedUrls");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
