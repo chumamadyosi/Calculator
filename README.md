@@ -38,7 +38,7 @@ API Endpoint
 
 **Request Body**
 
-```json
+`json
 {
   "left": 10,
   "right": 5,
@@ -58,7 +58,7 @@ API Endpoint
   "left": 10,
   "right": 5,
   "operation": "Division" 
-}
+} `
 
 **## (Frontend) Tech**
 
@@ -90,6 +90,6 @@ API Integration – calculate function handles arithmetic operations asynchronou
 **
 ## NOTE**
 RUN
-npm install then
-npm run dev 
+**npm install** then
+**npm run dev **
 
