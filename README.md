@@ -59,3 +59,37 @@ API Endpoint
   "right": 5,
   "operation": "Division" 
 }
+
+**## (Frontend) Tech**
+
+
+React – UI components and state-driven rendering
+
+TypeScript – Type safety for better maintainability
+
+Redux Toolkit – Centralized state management for display, memory, and history
+
+React-Redux Hooks – useAppDispatch and useAppSelector for interacting with the store
+
+CSS / App Styling – Simple styles for layout, buttons, display, and history panel
+
+API Integration – calculate function handles arithmetic operations asynchronously
+
+**## Feature **
+React – UI components and state-driven rendering
+
+TypeScript – Type safety for better maintainability
+
+Redux Toolkit – Centralized state management for display, memory, and history
+
+React-Redux Hooks – useAppDispatch and useAppSelector for interacting with the store
+
+CSS / App Styling – Simple styles for layout, buttons, display, and history panel
+
+API Integration – calculate function handles arithmetic operations asynchronously
+**
+## NOTE**
+RUN
+npm install then
+npm run dev 
+
