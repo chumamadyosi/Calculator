@@ -1,0 +1,1 @@
+export type OperationType = "Addition" | "Subtraction" | "Multiplication" | "Division";

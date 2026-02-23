@@ -6,7 +6,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Calculator.API.Services
 {
-    public class CalculatorService(ICalculationFactory _factory) : ICalculatorService
+    public class CalculatorService(ICalculationFactory _factory, ILogger<CalculatorService> _logger) : ICalculatorService
     {
         public CalculateResponse Execute(decimal firstNumber, decimal secondNumber, OperationType operatorSymbol)
         {
@@ -16,15 +16,23 @@ namespace Calculator.API.Services
                 var result = operation.Calculate(firstNumber, secondNumber);
                 return new CalculateResponse { Results = result, Error = CalculationError.None };
             }
-            catch (DivideByZeroException)
+            catch (DivideByZeroException ex)
             {
+                _logger.LogWarning(ex, "User attempted division by zero: {firstNumber} / 0", firstNumber);
                 return new CalculateResponse { Results = null, Error = CalculationError.DivisionByZero };
             }
-            catch (NotSupportedException)
+            catch (NotSupportedException ex)
             {
+                _logger.LogError(ex, "Operation type {operatorSymbol} is not supported. ", operatorSymbol);
                 return new CalculateResponse { Results = null, Error = CalculationError.InvalidOperation };
             }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex, "Unexpected error in CalculatorService during {operatorSymbol} operation", operatorSymbol);
+                return new CalculateResponse { Results = null, Error = CalculationError.unknownError };
+            }
         }
+
     }
 }
 

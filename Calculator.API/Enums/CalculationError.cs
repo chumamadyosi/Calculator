@@ -4,6 +4,7 @@
     {
         None,
         DivisionByZero = 1,
-        InvalidOperation = 2
+        InvalidOperation = 2,
+        unknownError = 3
     }
 }
